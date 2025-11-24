@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 %% 非线性（动力学）特征：基于时域的熵 | nonlinear features: time-domain-based entropy 
 %% 近似熵 | Approximate Entropy （similar to Sample Entropy）
 % 表征时间序列数据的复杂性（complexity）和规律性（regularity），值越大，时间序列越复杂、越不规律
@@ -29,6 +30,13 @@ r = 0.2;
 r = r*std(X);
 N = length(X);  % 信号长度，通常在100-5000范围内才能保证会有有效的统计特性和较小的误差
 % dim:重构维数，序列长度为100-1000时，推荐dim=2，序列长度为1000-30000时，推荐dim=3
+=======
+function apen = feat_ApproximateEntropy(X)
+X = X(:); 
+r = 0.2;
+r = r*std(X);
+N = length(X);  
+>>>>>>> 9b52cba77c230c861805b4294f89c83f4ce5ff80
 if (100<N) && (N<1000) 
     dim = 2;
 else
@@ -37,9 +45,15 @@ end
 phi = zeros(1,2);
 
 for j = 1:2
+<<<<<<< HEAD
     m = dim+j-1;        % dim通常设置为2，这样m=2和m=3; dim=3时，m=3和m=4
     C = zeros(1,N-m+1);   % 近似比例
     dataMat = zeros(m,N-m+1);   % 子序列集合，每个子序列的长度是m，共从data中提取N-m+1个子序列
+=======
+    m = dim+j-1;       
+    C = zeros(1,N-m+1);   
+    dataMat = zeros(m,N-m+1);   
+>>>>>>> 9b52cba77c230c861805b4294f89c83f4ce5ff80
     % setting up data matrix
     for i = 1:m
         dataMat(i,:) = X(i:N-m+i);
@@ -49,11 +63,19 @@ for j = 1:2
     for i = 1:N-m+1
         tempMat = abs(dataMat - repmat(dataMat(:,i),1,N-m+1));
         boolMat = any( (tempMat > r),1);
+<<<<<<< HEAD
         C(i) = sum(~boolMat)/(N-m+1);         % 近似比例
+=======
+        C(i) = sum(~boolMat)/(N-m+1);         
+>>>>>>> 9b52cba77c230c861805b4294f89c83f4ce5ff80
     end
 
     % summing over the counts
     phi(j) = sum(log(C))/(N-m+1);
 end
 apen = phi(1)-phi(2);
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> 9b52cba77c230c861805b4294f89c83f4ce5ff80
