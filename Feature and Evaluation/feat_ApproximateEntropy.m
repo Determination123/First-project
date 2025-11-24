@@ -1,4 +1,5 @@
 function apen = feat_ApproximateEntropy(X)
+
 X = X(:); 
 r = 0.2;
 r = r*std(X);
