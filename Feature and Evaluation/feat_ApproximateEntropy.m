@@ -1,4 +1,5 @@
 function apen = feat_ApproximateEntropy(X)
+
 X = X(:);  
 r = 0.2;
 r = r*std(X);
@@ -31,3 +32,4 @@ for j = 1:2
 end
 apen = phi(1)-phi(2);
 end
+
