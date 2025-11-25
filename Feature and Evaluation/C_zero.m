@@ -11,8 +11,10 @@ function c = C_zero(x1)
             X2(i)=0;
         end
     end
+    
     x2 =ifft(X2);
     x3 = x1-x2;
     c = sum(abs(x3).*abs(x3))/sum(abs(x1).*abs(x1));
 end
+
 
